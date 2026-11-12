@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<!-- Yelda Mohseny -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coffee Connection with Grid</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico"
+          rel="stylesheet">
+
+    <style>
+        /* Starting Styles */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-size: 100%;
+            font-family: Arial, sans-serif;
+            background: rgb(234, 214, 159);
+            color: rgb(33, 16, 11);
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-family: Pacifico, cursive;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        /* Yelda Mohseny's Grid Styles */
+
+        /* Overall Page Grid */
+
+        body {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "main sidebar"
+                "footer footer";
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 20px;
+        }
+
+        /* Header and Navigation */
+
+        header {
+            grid-area: header;
+            background: rgb(33, 16, 11);
+            padding: 25px 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: rgb(234, 214, 159);
+            word-spacing: 5px;
+            letter-spacing: 3px;
+            text-shadow: 0 6px 3px #846843;
+            margin: 10px 0 30px;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            display: block;
+            padding: 12px;
+            font-size: 1em;
+            color: rgb(243, 255, 188);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: rgb(234, 214, 159);
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+
+        main {
+            grid-area: main;
+            min-width: 0;
+            margin-left: 20px;
+            padding: 20px;
+            background: rgb(243, 255, 188);
+        }
+
+        figure {
+            margin: 0 auto 25px;
+            text-align: center;
+        }
+
+        figure img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        #welcome h2 {
+            margin-top: 15px;
+        }
+
+        #welcome blockquote {
+            margin: 20px 0 35px;
+            line-height: 1.6;
+        }
+
+        /* Product Grid */
+
+        #products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            min-width: 0;
+            background: rgb(234, 214, 159);
+            padding: 15px;
+            border: 2px dashed #846843;
+            text-align: center;
+        }
+
+        .product h3 {
+            margin-top: 10px;
+        }
+
+        .product img {
+            display: block;
+            width: 100%;
+            max-width: 240px;
+            height: 220px;
+            object-fit: cover;
+            margin: 20px auto;
+        }
+
+        .product p {
+            line-height: 1.5;
+        }
+
+        /* Sidebar and Contact Form */
+
+        aside {
+            grid-area: sidebar;
+            min-width: 0;
+            margin-right: 20px;
+            padding: 20px;
+            background: rgb(243, 255, 188);
+            align-self: start;
+        }
+
+        #contact h2 {
+            font-size: 1.7em;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        #contact p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        form {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            background: rgb(234, 214, 159);
+        }
+
+        .form-field {
+            margin-bottom: 18px;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        form input {
+            display: block;
+            width: 100%;
+            min-width: 0;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #846843;
+            border-radius: 4px;
+            background: white;
+        }
+
+        form input:focus {
+            outline: 2px solid rgb(33, 16, 11);
+            outline-offset: 2px;
+        }
+
+        .form-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: rgb(33, 16, 11);
+            color: rgb(243, 255, 188);
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        button:hover,
+        button:focus-visible {
+            background: #63472f;
+        }
+
+        /* Footer */
+
+        footer {
+            grid-area: footer;
+            background: rgb(33, 16, 11);
+            color: rgb(243, 255, 188);
+            padding: 20px;
+            font-size: 0.85em;
+            text-align: center;
+        }
+
+        address p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Tablet Layout */
+
+        @media screen and (max-width: 900px) and (min-width: 601px) {
+            body {
+                grid-template-columns: minmax(0, 1fr) 260px;
+            }
+
+            #products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .product img {
+                height: 180px;
+            }
+        }
+
+        /* Mobile Layout: 600px or Smaller */
+
+        @media screen and (max-width: 600px) {
+            body {
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "sidebar"
+                    "footer";
+                grid-template-columns: minmax(0, 1fr);
+                gap: 15px;
+            }
+
+            header {
+                padding: 20px 10px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 5px;
+            }
+
+            nav a {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+
+            main {
+                margin: 0 10px;
+                padding: 15px;
+            }
+
+            #welcome h2 {
+                font-size: 1.7em;
+            }
+
+            #products {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 15px;
+            }
+
+            .product {
+                padding: 15px;
+            }
+
+            .product img {
+                height: auto;
+                max-height: 260px;
+                object-fit: contain;
+            }
+
+            aside {
+                margin: 0 10px;
+                padding: 20px;
+            }
+
+            #contact h2 {
+                font-size: 1.7em;
+            }
+
+            form {
+                max-width: 400px;
+                margin: 20px auto 0;
+            }
+
+            footer {
+                padding: 20px 10px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header and Navigation -->
+
+    <header class="center">
+        <h1>Coffee Connection</h1>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#welcome">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#location">Locations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+
+    <main id="home">
+
+        <figure>
+            <img src="images/people.png"
+                 alt="People drinking coffee together">
+        </figure>
+
+        <section id="welcome">
+            <h2 class="center">Welcome to Coffee Connection!</h2>
+
+            <blockquote>
+                We're not just passionate lovers of coffee,
+                but everything else that goes with a full
+                and rewarding coffeehouse experience.
+                We also offer a selection of premium teas,
+                fine pastries and other delectable treats.
+                And the music you hear in store is chosen
+                for its artistry and appeal.
+
+                <br><br>
+
+                It's not unusual to see people coming to
+                Coffee Connection to chat, meet up or even work.
+                We're a neighborhood gathering place,
+                a part of the daily routine, and would like
+                to be part of your way of life.
+            </blockquote>
+        </section>
+
+        <!-- Product Grid -->
+
+        <section id="products" aria-label="Our Products">
+
+            <article class="product">
+                <h3>Espresso</h3>
+                <p>
+                    <img src="images/coffee_espresso.jpg"
+                         alt="Espresso coffee">
+                </p>
+                <p>Popular espresso beverages</p>
+            </article>
+
+            <article class="product">
+                <h3>Blended</h3>
+                <p>
+                    <img src="images/coffee_blended.jpg"
+                         alt="Blended coffee drinks">
+                </p>
+                <p>Delicious icy blends</p>
+            </article>
+
+            <article class="product">
+                <h3>Pastries</h3>
+                <p>
+                    <img src="images/coffee_pastries.jpg"
+                         alt="Pastries">
+                </p>
+                <p>Muffins, bagels, coffee cakes, and more</p>
+            </article>
+
+            <article class="product">
+                <h3>Food</h3>
+                <p>
+                    <img src="images/coffee_food.jpg"
+                         alt="Sandwiches and food">
+                </p>
+                <p>Sandwiches, paninis, salads and more</p>
+            </article>
+
+            <article class="product">
+                <h3>Breakfast</h3>
+                <p>
+                    <img src="images/coffee_breakfast.jpg"
+                         alt="Breakfast food">
+                </p>
+                <p>
+                    Biscuits, muffins, wraps, croissants,
+                    oatmeal and more
+                </p>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Contact Sidebar -->
+
+    <aside id="contact">
+
+        <h2 class="center">
+            Sign up to Receive Our Newsletter
+        </h2>
+
+        <p>
+            A cup of coffee in the morning may provide
+            more than just an energy boost. Health benefits,
+            say some researchers, may range from helping
+            prevent diabetes to lowering the risk of
+            liver disease. With over 400 billion cups
+            of coffee thought to be consumed every year,
+            coffee is one of the world's most popular drinks.
+            However, drinking too much coffee can result
+            in some very unpleasant adverse effects.
+            According to a study by researchers at the
+            University of Oklahoma, caffeine can cause
+            anxiety symptoms in normal individuals,
+            especially in vulnerable patients, like
+            those with pre-existing anxiety disorders.
+        </p>
+
+        <form action="#" method="post">
+
+            <div class="form-field">
+                <label for="fname">First Name:</label>
+                <input type="text"
+                       name="fname"
+                       id="fname"
+                       autocomplete="given-name"
+                       required>
+            </div>
+
+            <div class="form-field">
+                <label for="lname">Last Name:</label>
+                <input type="text"
+                       name="lname"
+                       id="lname"
+                       autocomplete="family-name"
+                       required>
+            </div>
+
+            <div class="form-field">
+                <label for="email">Your Email:</label>
+                <input type="email"
+                       name="email"
+                       id="email"
+                       autocomplete="email"
+                       required>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </div>
+
+        </form>
+
+    </aside>
+
+    <!-- Footer -->
+
+    <footer class="center" id="location">
+        <address>
+            <p>
+                PO Box 1234<br>
+                San Diego, CA 92100<br>
+                info@CoffeeConnection.com
+            </p>
+        </address>
+    </footer>
+
+</body>
+</html>
